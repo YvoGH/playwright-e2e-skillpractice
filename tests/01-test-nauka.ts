@@ -42,3 +42,4 @@ test('Zmiana hasła użytkownika', async ({ page }) => {
     await passwordModal.getByRole('button', { name: 'Zapisz zmiany'}).click();
     await expect(passwordModal).not.toBeVisible();
 });
+
