@@ -14,3 +14,10 @@ for (const dane of daneLogowania) {
         await expect(page).toHaveURL(dane.oczekiwanyUrl);
     });
 }
+
+test('Nieudane logowanie - niepoprawne hasło', async ({ page }) => {
+    await page.goto('https://app.example.com/login');
+    const logowanie = new LoginPage(page);
+    await logowanie.zalogujUzytkownika('qa@example.com', 'ZleHaslo123');
+    await logowanie.sprawdzKomunikatBledu('Nieprawidłowy login lub hasło');
+});
